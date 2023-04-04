@@ -12,6 +12,7 @@ import json
 def carregarJson(nomeArquivo):
   with open(nomeArquivo) as arquivoJson:
       faturamentos = json.load(arquivoJson)
+      faturamentos.sort(key=lambda x: x['valor'], reverse=True)
       return faturamentos
   
 def getMediaFaturamentoMeses(faturas):
@@ -43,7 +44,6 @@ def getMaiorFaturamento(faturas):
     return faturas[0]
   
 faturamentos = carregarJson("dados.json")
-faturamentos.sort(key=lambda x: x['valor'], reverse=True)
 
 #   	• O menor valor de faturamento ocorrido em um dia do mês;
 menorFatura = getMenorFaturamento(faturamentos)
