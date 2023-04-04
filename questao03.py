@@ -14,7 +14,7 @@ def carregarJson(nomeArquivo):
       faturamentos = json.load(arquivoJson)
       return faturamentos
   
-def getMediaFaturamentoMes(faturas):
+def getMediaFaturamentoMeses(faturas):
     faturaTotal = 0.0
     diasFaturados = 0
     for tempFatura in faturas:
