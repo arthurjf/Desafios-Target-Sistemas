@@ -8,20 +8,20 @@
 #   
 #   Escreva um programa na linguagem que desejar onde calcule o percentual de representação que cada estado teve dentro do valor total mensal da distribuidora.
 
-faturamentlMensalEstados = [["SP", 67836.43], ["RJ", 36678.66], ["MG", 29229.88], ["ES", 27165.48], ["Outros", 19849.53]]
+faturamentoMensalEstados = [["SP", 67836.43], ["RJ", 36678.66], ["MG", 29229.88], ["ES", 27165.48], ["Outros", 19849.53]]
 
 print("Segue abaixo as faturas de cada estado do mês:")
 
 faturaTotal = 0.0
-for tempFatura in faturamentlMensalEstados:
-    dinheiroFormatado = "${:,.2f}".format(tempFatura[1])
-    print("{0}: R$ {1}".format(tempFatura[0], dinheiroFormatado))
+for tempFatura in faturamentoMensalEstados:
+    faturamentoFormatado = "${:,.2f}".format(tempFatura[1])
+    print("{0}: R$ {1}".format(tempFatura[0], faturamentoFormatado))
     fatura = tempFatura[1]
     faturaTotal += fatura
 
 print("")
 
-for tempFatura in faturamentlMensalEstados:
+for tempFatura in faturamentoMensalEstados:
     faturaVez = tempFatura[1]
     porcentagemVez = (faturaVez / faturaTotal) * 100
     porcentagemFormatada = "{:.2f}".format(porcentagemVez)

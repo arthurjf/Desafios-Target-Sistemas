@@ -53,7 +53,7 @@ print("Menor faturamento: {0} no dia {1}".format(menorFatura['valor'], menorFatu
 maiorFatura = getMaiorFaturamento(faturamentos)
 print("Maior faturamento: {0} no dia {1}".format(maiorFatura['valor'], maiorFatura['dia']))
 
-mediaFatura = getMediaFaturamentoMes(faturamentos)
+mediaFatura = getMediaFaturamentoMeses(faturamentos)
 
 #   	• Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.
 print("Dias de faturamento acima da média mensal: {0}".format(getNumeroDiasFaturamentoAcimaMedia(faturamentos, mediaFatura)))
