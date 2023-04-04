@@ -9,26 +9,26 @@
 
 import json
   
-file = open('faturas.json')
+file = open('dados.json')
   
 faturas = json.load(file)
 
-faturas.sort(key=lambda x: x['fatura'], reverse=True)
+faturas.sort(key=lambda x: x['valor'], reverse=True)
 
 file.close()
 
 #   	• O menor valor de faturamento ocorrido em um dia do mês;
 menorFatura = faturas[len(faturas)-1]
-print("Menor fatura: {0} no dia {1}".format(menorFatura['fatura'], menorFatura['dia']))
+print("Menor faturamento: {0} no dia {1}".format(menorFatura['valor'], menorFatura['dia']))
 
 #   	• O maior valor de faturamento ocorrido em um dia do mês;
 maiorFatura = faturas[0]
-print("Maior fatura: {0} no dia {1}".format(maiorFatura['fatura'], maiorFatura['dia']))
+print("Maior faturamento: {0} no dia {1}".format(maiorFatura['valor'], maiorFatura['dia']))
 
 faturaTotal = 0.0
 diasFaturados = 0
 for tempFatura in faturas:
-    faturaValor = float(tempFatura['fatura'])
+    faturaValor = float(tempFatura['valor'])
     if faturaValor > 0:
         faturaTotal += faturaValor
         diasFaturados += 1
@@ -37,9 +37,9 @@ mediaFatura = faturaTotal / diasFaturados
 #   	• Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.
 diasFaturaAcimaMedia = 0
 for tempFatura in faturas:
-    faturaValor = float(tempFatura['fatura'])
+    faturaValor = float(tempFatura['valor'])
     if faturaValor > mediaFatura:
         diasFaturaAcimaMedia += 1
     else:
-        print("Dias de fatura acima da média mensal: {0}".format(diasFaturaAcimaMedia))
+        print("Dias de faturamento acima da média mensal: {0}".format(diasFaturaAcimaMedia))
         exit()
