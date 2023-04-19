@@ -9,8 +9,12 @@
 
 import json
 
-def carregarJson(nomeArquivo):
-  with open(nomeArquivo) as arquivoJson:
+MENSAGEM_MENOR_FATURAMENTO_DIA = "Menor faturamento: {0} no dia {1}"
+MENSAGEM_MAIOR_FATURAMENTO_DIA = "Maior faturamento: {0} no dia {1}"
+MENSAGEM_DIAS_FATURAMENTO_ACIMA = "Dias de faturamento acima da média mensal: {0}"
+
+def carregarJson(arquivo : str):
+  with open(arquivo) as arquivoJson:
       faturamentos = json.load(arquivoJson)
       faturamentos.sort(key=lambda x: x['valor'], reverse=True)
       return faturamentos
@@ -47,13 +51,13 @@ faturamentos = carregarJson("dados.json")
 
 #   	• O menor valor de faturamento ocorrido em um dia do mês;
 menorFatura = getMenorFaturamento(faturamentos)
-print("Menor faturamento: {0} no dia {1}".format(menorFatura['valor'], menorFatura['dia']))
+print(MENSAGEM_MENOR_FATURAMENTO_DIA.format(menorFatura['valor'], menorFatura['dia']))
 
 #   	• O maior valor de faturamento ocorrido em um dia do mês;
 maiorFatura = getMaiorFaturamento(faturamentos)
-print("Maior faturamento: {0} no dia {1}".format(maiorFatura['valor'], maiorFatura['dia']))
+print(MENSAGEM_MAIOR_FATURAMENTO_DIA.format(maiorFatura['valor'], maiorFatura['dia']))
 
 mediaFatura = getMediaFaturamentoMeses(faturamentos)
 
 #   	• Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.
-print("Dias de faturamento acima da média mensal: {0}".format(getNumeroDiasFaturamentoAcimaMedia(faturamentos, mediaFatura)))
+print(MENSAGEM_DIAS_FATURAMENTO_ACIMA.format(getNumeroDiasFaturamentoAcimaMedia(faturamentos, mediaFatura)))
