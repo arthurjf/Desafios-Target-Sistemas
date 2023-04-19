@@ -3,21 +3,25 @@
 #  IMPORTANTE: 
 #  Esse número pode ser informado através de qualquer entrada de sua preferência ou pode ser previamente definido no código;
 
+TEXTO_PERTENCE_SEQUENCIA = "O número {0} PERTENCE a sequência Fibonacci"
+TEXTO_NAO_PERTENCE_SEQUENCIA = "O número {0} NÃO pertence a sequência Fibonacci"
+
 def numeroPertenceFibonacci(numero):
-    index = 0
-    fibonacci = 0
-    ultimoNumero = 0
-    while numero > fibonacci:
-        ultimoNumero = index
-        index += 1
-        fibonacci = ultimoNumero + index
-        if(numero == fibonacci):
+    if numero == 0 or numero == 1:
+        return True
+    ultimo = 0
+    anterior = 1
+    while numero > anterior:
+        temp = ultimo
+        ultimo = anterior
+        anterior = temp + anterior
+        if(anterior == numero):
             return True
     return False
 
 usuarioNumero = int(input("Digite um número: "))
     
 if(numeroPertenceFibonacci(usuarioNumero)):
-    print("O número {0} PERTENCE a sequência Fibonacci".format(usuarioNumero))
+    print(TEXTO_PERTENCE_SEQUENCIA.format(usuarioNumero))
 else:
-    print("O número {0} NÃO pertence a sequência Fibonacci".format(usuarioNumero))
+    print(TEXTO_NAO_PERTENCE_SEQUENCIA.format(usuarioNumero))
